@@ -2,21 +2,32 @@
   <div>
     <template>
       <van-grid :border="false" :column-num="3">
-        <van-grid-item>
-          <van-image />
-        </van-grid-item>
+        <van-grid-item>{{cateLists[index]}}</van-grid-item>
       </van-grid>
     </template>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 export default {
-  name: 'Classdata',
-  props: ['index'],
-  methods: {
-    click () {
-      console.log(this.index)
+  name: "Classdata",
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  // props: ["index"],
+  data() {
+    return {};
+  },
+  watch: {
+    index: {
+      handler: function(val) {
+        console.log(val);
+        // this.index = val
+      },
+      immediate:true
     }
   },
   computed: {
@@ -24,10 +35,12 @@ export default {
       cateLists: state => state.home.cateLists
     })
   },
-  mounted () {
-  }
-}
-
+  methods: {
+    
+  },
+  mounted() {},
+  created() {}
+};
 </script>
 
 <style>
